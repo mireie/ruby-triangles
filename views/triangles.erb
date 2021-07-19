@@ -1,0 +1,14 @@
+  
+<h1>Triangle Pun</h1>
+
+<h3>Available Triangles</h3>
+
+<% if @triangles.any? %>
+  <ul>
+      <% @triangles.each do |triangle| %>
+    <li><a href="/triangles/<%= triangle.id %>"></a></li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>There are currently no records to display.</p>
+<% end %>
