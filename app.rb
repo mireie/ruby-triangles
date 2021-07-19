@@ -7,17 +7,23 @@ also_reload('lib/**/*.rb')
 get('/') do
   @triangles = Triangle.all
   erb(:triangles)
+  
 end
 get('/triangles') do
   @triangles = Triangle.all
   erb(:triangles)
+  erb(:new_triangle)
 end
 post('/triangles') do
-  side1 = paramas[:side1]
-  side2 = paramas[:side2]
-  side3 = paramas[:side3]
-  triangle = Triangle.new(side1,side2,side3)
+  side1 = params[:triangle_side_1]
+  side2 = params[:triangle_side_2]
+  side3 = params[:triangle_side_3]
+  triangle = Triangle.new(side1,side2,side3, nil)
   triangle.save()
   @triangles = Triangle.all()
   erb(:triangles)
+end
+
+get('/triangles/new') do
+  erb(:new_triangle)
 end

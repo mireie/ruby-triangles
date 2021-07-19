@@ -6,9 +6,23 @@
 <% if @triangles.any? %>
   <ul>
       <% @triangles.each do |triangle| %>
-    <li><a href="/triangles/<%= triangle.id %>"></a></li>
+    <li><a href="/triangles/<%= triangle.id %>"><%= triangle.type %> - [<%= triangle.side1 %>, <%= triangle.side2 %>, <%= triangle.side3 %>]</a></li>
   <% end %>
   </ul>
 <% else %>
   <p>There are currently no records to display.</p>
 <% end %>
+
+<a href="/triangles/new">Add a new triangle</a>
+
+<form action="/triangles" method="post">
+  <div class="form-group">
+    <label for="side_1">Side 1</label>
+    <input id="side_1" name="triangle_side_1" class="form-control" type="number">
+    <label for="side_2">Side 2</label>
+    <input id="side_2" name="triangle_side_2" class="form-control" type="number">
+    <label for="side_3">Side 3</label>
+    <input id="side_3" name="triangle_side_3" class="form-control" type="number">
+  </div>
+  <button type="submit" class="btn">Add Triangle!</button>
+</form>
